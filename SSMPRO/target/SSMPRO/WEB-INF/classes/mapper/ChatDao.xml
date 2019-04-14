@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cm.dao.IChatDao">
+    <resultMap id="ChatAllMap" type="com.cm.entity.ChatMsg">
+        <id column="chat_id" property="id"/>
+        <result column="chat_user_id" property="chatUserId"/>
+        <result column="chat_date" property="chatDate"/>
+        <result column="chat_content" property="content"/>
+    </resultMap>
+
+    <resultMap id="MsgUserMap" type="com.cm.entity.ChatMsg">
+        <id column="chat_id" property="id"/>
+        <result column="chat_user_id" property="user.id"/>
+        <result column="username" property="user.username"/>
+        <result column="chat_date" property="chatDate"/>
+        <result column="chat_content" property="content"/>
+    </resultMap>
+
+
+    <!--<select id="findMsg" parameterType="String" resultMap="ChatAllMap">
+        SELECT * FROM t_chat WHERE chat_content LIKE "%"#{conSearch}"%"
+    </select>-->
+
+    <select id="testMsg" parameterType="String" resultMap="ChatAllMap">
+        SELECT * FROM chat
+    </select>
+
+    <!-- public ChatMsg getMsgUser(Integer id);-->
+    <select id="findMsg" parameterType="String" resultMap="MsgUserMap">
+        SELECT * FROM chat ch , user u WHERE ch.user_id = u.id AND ch.content LIKE "%"#{conSearch}"%"
+    </select>
+
+    <insert id="addMsg" parameterType="com.cm.entity.ChatMsg">
+        INSERT INTO chat(id,user_id,date,content) VALUES (null,#{chatUserId},#{chatDate},#{content})
+    </insert>
+
+</mapper>
