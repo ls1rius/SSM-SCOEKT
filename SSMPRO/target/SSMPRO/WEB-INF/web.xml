@@ -22,6 +22,7 @@
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <async-supported>true</async-supported>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
@@ -48,6 +49,7 @@
     </init-param>
     <!--标记容器启动的时候就启动这个servlet-->
     <load-on-startup>1</load-on-startup>
+    <async-supported>true</async-supported>
   </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
@@ -55,4 +57,5 @@
         <!--/*.do是对所有以.do结尾的请求做处理，/*是对所有请求做处理-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>
