@@ -4,7 +4,7 @@ public class User {
     private int id;
     private String password;
     private String username;
-    private int age;
+    private String registerDate;
 
     public int getId() {
         return id;
@@ -30,11 +30,35 @@ public class User {
         this.username = username;
     }
 
-    public int getAge() {
-        return age;
+    public String getRegisterDate() {
+        return registerDate;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setRegisterDate(String registerDate) {
+        this.registerDate = registerDate;
     }
+
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                '}'+ registerDate;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(int id, String username, String password, String registerDate) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.registerDate = registerDate;
+    }
+
+    public User() {
+
+    }
+
 }

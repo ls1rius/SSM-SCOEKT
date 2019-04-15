@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String path = request.getContextPath();%>
 <html>
-<link rel="stylesheet" href="<%=path%>../static/css/bootstrap.min.css"
+<link rel="stylesheet" href="<%=path%>/static/css/bootstrap.min.css"
       type="text/css">
-<script src="<%=path%>../static/js/jquery.min.js"></script>
-<script src="<%=path%>../static/js/bootstrap.min.js"
+<script src="<%=path%>/static/js/jquery.min.js"></script>
+<script src="<%=path%>/static/js/bootstrap.min.js"
         type="text/javascript"></script>
 <head>
     <title>历史记录</title>
@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav">
             <li>
                 <form class="form-inline navbar-form "
-                      action="<%=path%>/chat/findMsg.do" method="post">
+                      action="<%=path%>findMsg" method="post">
                     <input class="form-control" type="search"
                            placeholder="我想知道......" maxlength="15"
                            name="conSearch">
@@ -29,7 +29,7 @@
         <c:forEach items="${msgList}" var="msg">
             <tbody>
             <tr>
-                <th>${msg.user.userName}</th>
+                <th>${msg.user.username}</th>
                 <th>${msg.chatDate}</th>
                 <th>${msg.content}</th>
             </tr>

@@ -15,11 +15,11 @@
 <head>
     <title>Start chatting now</title>
 </head>
-<link rel="stylesheet" href="<%=path%>../static/css/bootstrap.min.css"
+<link rel="stylesheet" href="<%=path%>/static/css/bootstrap.min.css"
       type="text/css">
-<link rel="stylesheet" href="<%=path%>../static/css/chat.css" type="text/css">
-<script src="<%=path%>../static/js/jquery.min.js"></script>
-<script src="<%=path%>../static/js/bootstrap.min.js"
+<link rel="stylesheet" href="<%=path%>/static/css/chat.css" type="text/css">
+<script src="<%=path%>/static/js/jquery.min.js"></script>
+<script src="<%=path%>/static/js/bootstrap.min.js"
         type="text/javascript"></script>
 <body>
 
@@ -74,7 +74,7 @@
                 发送图片
             </button>
             <button type="button" class="btn btn-default"
-                    onclick="location.href='http://localhost:8080/chatroom/chatHistory.jsp'">
+                    onclick="location.href='chatHistroy'">
                 消息记录
             </button>
         </div>
@@ -113,7 +113,10 @@
 </body>
 <script>
     var wsServer = null;
-    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/websocket.do";
+    wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/websocket";
+
+    // wsServer = "ws://172.18.64.52:8079/websocket";
+
     var websocket = null;
     //将后台传来的消息显示到前端
     /* websocket.onmessage = function (evnt) {
@@ -145,7 +148,7 @@
                 if (message.msgTyp === "notice") {
                     var htmlOnline;
                     $("#onlineNum").text(message.onlineNum);
-                    htmlOnline = "<p> " + message.userName + " </p>";
+                    htmlOnline = "<p> " + message.username + " </p>";
                     //实时更新在线用户
                     onlineUser.html("");
                     $(onlineUser).append(htmlOnline);
@@ -155,7 +158,7 @@
                     $("#onlineNum").text(message.onlineNum);
                     var msg = $("#msg");
                     //msg.html是之前的聊天内容，空一行
-                    msg.html(msg.html() + "<br/>" + "用户: " + message.userName + "退出聊天");
+                    msg.html(msg.html() + "<br/>" + "用户: " + message.username + "退出聊天");
                 }
             };
             websocket.onerror = function (evnt) {
@@ -184,7 +187,7 @@
         }
     }
     function sendMsgClose() {
-        var closeMsg = "${user.userName}";
+        var closeMsg = "${user.username}";
         websocket.send(JSON.stringify({
             message: closeMsg,
             type: "exit"
@@ -197,8 +200,8 @@
                 $("#onlineNum").text(message.onlineNum);
                 var msg = $("#msg");
                 //msg.html是之前的聊天内容，空一行
-                msg.html(msg.html() + "<br/>" + "用户: " + message.userName + "退出聊天");
-                htmlOnline = "<p> " + message.userNameList + " </p>";
+                msg.html(msg.html() + "<br/>" + "用户: " + message.username + "退出聊天");
+                htmlOnline = "<p> " + message.usernameList + " </p>";
                 onlineUser.html("");
                 $(onlineUser).append(htmlOnline);
                 //我之前是把这个函数放到下面的，但是js是异步操作，意味着它会先过一遍主函数再过枝干
@@ -245,6 +248,7 @@
             alert("输入不能为空的哦");
             return;
         }
+
         //向后台MyWebSocketHandler中的handlemessage发送信息
         websocket.send(JSON.stringify({
             message: message,

@@ -21,7 +21,7 @@
 </style>
 
 <script type="text/javascript">
-    window.location.href="/chat/main";
+    window.location.href="/user/index";
 </script>
 
 <body>

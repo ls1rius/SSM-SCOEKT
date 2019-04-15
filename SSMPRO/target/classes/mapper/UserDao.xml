@@ -4,8 +4,28 @@
 <!-- 设置为IUserDao接口方法提供sql语句配置 -->
 <mapper namespace="com.cm.dao.IUserDao">
 
-    <select id="selectUser" resultType="com.cm.entity.User" parameterType="int">
-        SELECT * FROM user WHERE id = #{id}
+    <resultMap id="UserAllMap" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="register_date" property="registerDate"/>
+    </resultMap>
+
+
+    <select id="getUser" parameterType="Integer" resultMap="UserAllMap">
+        SELECT * FROM user WHERE id=#{userID}
     </select>
+
+    <select id="getUserByName" parameterType="String" resultMap="UserAllMap">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
+
+    <select id="userLogin" parameterType="User" resultType="java.lang.Integer">
+        SELECT count(*) FROM user WHERE username =#{username} AND password = #{password}
+    </select>
+
+    <insert id="userRegister" parameterType="User">
+        INSERT INTO user(username,password,register_date) VALUES (#{username},#{password},#{registerDate})
+    </insert>
 
 </mapper>

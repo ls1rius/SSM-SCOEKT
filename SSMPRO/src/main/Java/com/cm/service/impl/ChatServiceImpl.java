@@ -6,12 +6,13 @@ import com.cm.service.IChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service("chatService")
 public class ChatServiceImpl implements IChatService{
 
-    @Autowired
+    @Resource
     private IChatDao chatDao;
 
     /*

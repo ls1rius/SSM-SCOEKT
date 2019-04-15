@@ -2,7 +2,6 @@ package com.cm.controller;
 
 import com.cm.entity.ChatMsg;
 import com.cm.service.IChatService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,10 +18,6 @@ public class ChatController {
     @Resource(name="chatService")
     private IChatService chatService;
 
-    @RequestMapping(value = "/main")
-    public String main(){
-        return "chat";
-    }
 
     @RequestMapping(value = "/findMsg", method = RequestMethod.POST)
     public ModelAndView findMsg(String conSearch, HttpSession session) {

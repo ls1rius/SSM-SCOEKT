@@ -20,6 +20,7 @@
     <!-- 开启SpringMVC注解模式 -->
     <mvc:annotation-driven/>
 
+    <mvc:resources mapping="/static/**" location="WEB-INF/static/"/>
 
     <!--&lt;!&ndash; 静态资源默认servlet配置 &ndash;&gt;-->
     <mvc:default-servlet-handler/>

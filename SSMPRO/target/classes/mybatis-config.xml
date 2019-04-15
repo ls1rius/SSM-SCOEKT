@@ -7,4 +7,8 @@
         <!-- 开启转换 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+    <!-- 设置别名 -->
+    <typeAliases>
+        <package name="com.cm.entity" />
+    </typeAliases>
 </configuration>

@@ -3,18 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cm.dao.IChatDao">
     <resultMap id="ChatAllMap" type="com.cm.entity.ChatMsg">
-        <id column="chat_id" property="id"/>
-        <result column="chat_user_id" property="chatUserId"/>
-        <result column="chat_date" property="chatDate"/>
-        <result column="chat_content" property="content"/>
+        <id column="id" property="id"/>
+        <result column="user_id" property="chatUserId"/>
+        <result column="date" property="chatDate"/>
+        <result column="content" property="content"/>
     </resultMap>
 
     <resultMap id="MsgUserMap" type="com.cm.entity.ChatMsg">
-        <id column="chat_id" property="id"/>
-        <result column="chat_user_id" property="user.id"/>
+        <id column="id" property="id"/>
+        <result column="user_id" property="user.id"/>
         <result column="username" property="user.username"/>
-        <result column="chat_date" property="chatDate"/>
-        <result column="chat_content" property="content"/>
+        <result column="date" property="chatDate"/>
+        <result column="content" property="content"/>
     </resultMap>
 
 

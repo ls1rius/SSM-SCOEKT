@@ -12,6 +12,4 @@ public interface IChatDao {
 
     List<ChatMsg> testMsg();
 
-//    //这是用来测试级联属性的
-//    ChatMsg getMsgUser(Integer id);
 }
